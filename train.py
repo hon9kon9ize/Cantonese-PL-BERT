@@ -36,6 +36,7 @@ model = MultiTaskModel(
 dataset = load_from_disk(config["data_folder"])
 
 batch_size = config["batch_size"]
+
 train_loader = build_dataloader(
     dataset,
     batch_size=batch_size,
@@ -47,9 +48,10 @@ training_args = TrainingArguments(
     output_dir=config["output_dir"],
     run_name="yue-pl-bert",
     num_train_epochs=10,
-    auto_find_batch_size=True,
+    # auto_find_batch_size=True,
+    per_device_train_batch_size=batch_size,
     logging_strategy="steps",
-    logging_steps=200,
+    logging_steps=config["log_interval"],
     learning_rate=1e-4,
     warmup_ratio=0.1,
     weight_decay=0.05,
