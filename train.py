@@ -24,7 +24,6 @@ tokenizer = BertTokenizer.from_pretrained(config["dataset_params"]["tokenizer"])
 # define model
 bert_base_configuration = BertConfig(**config["model_params"])
 bert = BertModel(bert_base_configuration)
-bert = torch.compile(bert)
 model = MultiTaskModel(
     bert,
     num_vocab=len(tokenizer.get_vocab()),
