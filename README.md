@@ -20,6 +20,10 @@ python -m ipykernel install --user --name BERT --display-name "BERT"
 pip install pandas singleton-decorator datasets "transformers<4.33.3" accelerate nltk phonemizer sacremoses pebble
 ```
 
+## Dataset
+
+The dataset we used is a processed Yue Wikipeda with ToJyutping as phonemizer [hon9kon9ize/yue-wiki-pl-bert](https://huggingface.co/datasets/hon9kon9ize/yue-wiki-pl-bert).
+
 ## Preprocessing
 Please refer to the notebook [preprocess.ipynb](https://github.com/hon9kon9ize/Cantonese-PL-BERT/blob/main/preprocess.ipynb) for more details. The preprocessing is for English Wikipedia dataset only. I will make a new branch for Japanese if I have extra time to demostrate training on other languages. You may also refer to [#6](https://github.com/hon9kon9ize/Cantonese-PL-BERT/issues/6#issuecomment-1797869275) for preprocessing in other languages like Japanese. 
 
