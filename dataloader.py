@@ -32,7 +32,7 @@ class FilePathDataset(torch.utils.data.Dataset):
         dataset,
         tokenizer="hon9kon9ize/bert-large-cantonese",
         word_separator=102,  # [SEP]
-        token_separator=" ",
+        token_separator="[SEP]",
         token_mask="[MASK]",
         max_mel_length=512,
         word_mask_prob=0.15,

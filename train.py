@@ -9,7 +9,7 @@ from transformers import (
     Trainer,
 )
 from model import MultiTaskModel
-from datasets import load_from_disk
+from datasets import load_from_disk, load_dataset
 from dataloader import build_dataloader
 from utils import length_to_mask
 
@@ -33,7 +33,7 @@ model = MultiTaskModel(
 
 
 # define dataset
-dataset = load_from_disk(config["data_folder"])
+dataset = load_dataset("hon9kon9ize/yue-wiki-pl-bert", split="train")
 
 batch_size = config["batch_size"]
 

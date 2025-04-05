@@ -2,7 +2,7 @@ log_dir: "Checkpoint"
 output_dir: "output"
 mixed_precision: "bf16"
 data_folder: "wikipedia_20220301.yue.processed"
-batch_size: 64
+batch_size: 256
 log_interval: 100
 
 dataset_params:

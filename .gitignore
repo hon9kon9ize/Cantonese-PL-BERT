@@ -4,3 +4,5 @@ Configs
 wandb
 output
 *.processed
+demo.ipynb
+run.sh*

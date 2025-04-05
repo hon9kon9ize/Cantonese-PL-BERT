@@ -1,6 +1,31 @@
 import re
 
 
+def split_jyutping(text):
+    """Splits a string of Jyutping into a list of individual syllables and punctuation.
+
+    Args:
+      text: The input string containing Jyutping.
+
+    Returns:
+      A list of strings, where each element is a Jyutping syllable or punctuation mark.
+    """
+
+    # Pattern to match Jyutping syllables (letters followed by a single digit 1-6)
+    jyutping_pattern = r"[a-z]+[1-6]"
+
+    # Pattern to match punctuation
+    punctuation_pattern = r"[.,!?]"
+
+    # Combine patterns to match either Jyutping or punctuation
+    combined_pattern = rf"({jyutping_pattern}|{punctuation_pattern})"
+
+    # Find all matches in the text
+    matches = re.findall(combined_pattern, text)
+
+    return matches
+
+
 INITIALS = [
     "b",
     "c",
@@ -150,7 +175,7 @@ def parse_jyutping(jyutping):
 
 
 class TextCleaner:
-    def __init__(self, dummy=None):
+    def __init__(self):
         self.word_index_dictionary = dicts
 
     def __call__(self, text):
@@ -159,7 +184,7 @@ class TextCleaner:
         chars = text.split(" ")
 
         for syllable in chars:
-            _syllables = re.findall(r"[a-z]+[1-9]{1}", syllable)
+            _syllables = re.findall(r"[a-z]+[1-9]{1}|[.,!?\s]", syllable)
 
             if len(_syllables) == 0:
                 _syllables = [syllable]
@@ -168,7 +193,7 @@ class TextCleaner:
 
             for _syllable in _syllables:
                 try:
-                    if _syllable in _punctuation or _syllable in [PAD, UNK, MASK]:
+                    if _syllable in _punctuation or _syllable in [PAD, UNK, MASK, SEP]:
                         indexes.append(self.word_index_dictionary[_syllable])
                         _word2ph_ += 1
                     else:

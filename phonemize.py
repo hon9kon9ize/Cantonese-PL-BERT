@@ -2,6 +2,10 @@ import re
 from text_normalize import normalize_text
 
 
+def is_jyutping(text):
+    return re.match(r"^[a-z]+[1-6]{1}", text) is not None
+
+
 def split_jyutping(text):
     """Splits a string of Jyutping into a list of individual syllables and punctuation.
 
@@ -26,9 +30,6 @@ def split_jyutping(text):
 
     return matches
 
-
-def is_jyutping(text):
-    return re.match(r"^[a-z]+[1-6]{1}", text) is not None
 
 
 def phonemize(text, phonemizer, tokenizer):
