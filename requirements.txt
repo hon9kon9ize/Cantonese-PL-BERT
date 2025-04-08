@@ -1,3 +1,5 @@
 WeTextProcessing
 ToJyutping
 mwparserfromhell
+transformers
+datasets
